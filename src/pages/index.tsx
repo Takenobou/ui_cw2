@@ -9,7 +9,7 @@ const Home: React.FC = () => {
             <SideBar />
             <div className="pt-16 ml-64 p-4">
                 <h1 className="text-3xl font-bold mb-4">Welcome</h1>
-                <p>Here goes your content...</p>
+                <p>BLAH BLAH BLAH.</p>
             </div>
         </div>
     );

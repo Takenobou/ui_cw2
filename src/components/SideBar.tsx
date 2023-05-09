@@ -1,28 +1,71 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { FaUser, FaHome, FaProjectDiagram, FaTasks, FaCalendarAlt, FaCaretDown } from 'react-icons/fa';
+import userData from '../data/userdata.json';
 
 const SideBar: React.FC = () => {
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    }
+
+    // Close dropdown if clicked outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (ref.current && !ref.current.contains(event.target as Node)) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [ref]);
+
     return (
-        <div className="fixed top-14 left-0 w-64 h-full bg-white shadow-md p-4">
-            <ul className="space-y-2">
-                <li>
-                    <a href="#" className="text-gray-700 hover:text-gray-900">
-                        Home
-                    </a>
+        <div className="fixed left-0 w-64 h-full bg-gray-50 shadow-md p-4 top-14">
+            <div className={`relative bg-white shadow hover:shadow-lg transition-shadow p-3 mb-8 cursor-pointer ${isDropdownOpen ? 'rounded-t-lg' : 'rounded-lg'}`} onClick={toggleDropdown} ref={ref}>
+                <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                        <FaUser className="text-xl text-gray-700"/>
+                        <h2 className="text-xl font-semibold text-gray-700">{userData.name}</h2>
+                    </div>
+                    <FaCaretDown className={`text-xl text-gray-700 transition-transform duration-200 ${isDropdownOpen ? 'transform rotate-180' : ''}`} />
+                </div>
+                {isDropdownOpen && (
+                    <ul className="absolute left-0 w-full space-y-2 bg-white rounded-b-lg shadow-lg mt-2 p-2">
+                        <li><button className="w-full text-left py-2 hover:bg-gray-100 rounded-lg transition-colors">Account settings</button></li>
+                        <li><button className="w-full text-left py-2 hover:bg-gray-100 rounded-lg transition-colors">Update profile</button></li>
+                        <li><button className="w-full text-left py-2 hover:bg-gray-100 rounded-lg transition-colors">Log out</button></li>
+                    </ul>
+                )}
+            </div>
+            <ul className="space-y-4">
+                <li className="flex items-center space-x-2">
+                    <button className="w-full py-2 px-4 flex items-center text-gray-700 hover:bg-gray-200 rounded-lg focus:outline-none">
+                        <FaHome className="text-xl mr-2" />
+                        <span className="font-medium">Home</span>
+                    </button>
                 </li>
-                <li>
-                    <a href="#" className="text-gray-700 hover:text-gray-900">
-                        Projects
-                    </a>
+                <li className="flex items-center space-x-2">
+                    <button className="w-full py-2 px-4 flex items-center text-gray-700 hover:bg-gray-200 rounded-lg focus:outline-none">
+                        <FaTasks className="text-xl mr-2" />
+                        <span className="font-medium">Tasks</span>
+                    </button>
                 </li>
-                <li>
-                    <a href="#" className="text-gray-700 hover:text-gray-900">
-                        Tasks
-                    </a>
+                <li className="flex items-center space-x-2">
+                    <button className="w-full py-2 px-4 flex items-center text-gray-700 hover:bg-gray-200 rounded-lg focus:outline-none">
+                        <FaProjectDiagram className="text-xl mr-2" />
+                        <span className="font-medium">Projects</span>
+                    </button>
                 </li>
-                <li>
-                    <a href="#" className="text-gray-700 hover:text-gray-900">
-                        Settings
-                    </a>
+                <li className="flex items-center space-x-2">
+                    <button className="w-full py-2 px-4 flex items-center text-gray-700 hover:bg-gray-200 rounded-lg focus:outline-none">
+                        <FaCalendarAlt className="text-xl mr-2" />
+                        <span className="font-medium">Calendar</span>
+                    </button>
                 </li>
             </ul>
         </div>
