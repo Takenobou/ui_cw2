@@ -1,10 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaUser, FaHome, FaProjectDiagram, FaTasks, FaCalendarAlt, FaCaretDown } from 'react-icons/fa';
 import userData from '../data/userdata.json';
+import {useNavigate} from "react-router-dom";
 
 const SideBar: React.FC = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
+
+    const navigate = useNavigate();
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -25,7 +28,7 @@ const SideBar: React.FC = () => {
     }, [ref]);
 
     return (
-        <div className="fixed left-0 w-64 h-full bg-gray-50 shadow-md p-4 top-14">
+        <div className="fixed left-0 w-64 h-full bg-gray-100 shadow-md p-4 top-14">
             <div className={`relative bg-white shadow hover:shadow-lg transition-shadow p-3 mb-8 cursor-pointer ${isDropdownOpen ? 'rounded-t-lg' : 'rounded-lg'}`} onClick={toggleDropdown} ref={ref}>
                 <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
@@ -44,19 +47,25 @@ const SideBar: React.FC = () => {
             </div>
             <ul className="space-y-4">
                 <li className="flex items-center space-x-2">
-                    <button className="w-full py-2 px-4 flex items-center text-gray-700 hover:bg-gray-200 rounded-lg focus:outline-none">
+                    <button className="w-full py-2 px-4 flex items-center text-gray-700 hover:bg-gray-200 rounded-lg focus:outline-none"
+                            onClick={() => navigate('/')}
+                    >
                         <FaHome className="text-xl mr-2" />
                         <span className="font-medium">Home</span>
                     </button>
                 </li>
                 <li className="flex items-center space-x-2">
-                    <button className="w-full py-2 px-4 flex items-center text-gray-700 hover:bg-gray-200 rounded-lg focus:outline-none">
+                    <button
+                        className="w-full py-2 px-4 flex items-center text-gray-700 hover:bg-gray-200 rounded-lg focus:outline-none"
+                        onClick={() => navigate('/tasks')}
+                    >
                         <FaTasks className="text-xl mr-2" />
                         <span className="font-medium">Tasks</span>
                     </button>
                 </li>
                 <li className="flex items-center space-x-2">
-                    <button className="w-full py-2 px-4 flex items-center text-gray-700 hover:bg-gray-200 rounded-lg focus:outline-none">
+                    <button className="w-full py-2 px-4 flex items-center text-gray-700 hover:bg-gray-200 rounded-lg focus:outline-none"
+                            onClick={() => navigate('/projects')}>
                         <FaProjectDiagram className="text-xl mr-2" />
                         <span className="font-medium">Projects</span>
                     </button>

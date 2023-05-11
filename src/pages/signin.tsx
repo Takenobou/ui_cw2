@@ -32,7 +32,7 @@ const SignIn = ({ setIsLoggedIn }: SignInProps) => {
             formData.password === loginData.password
         ) {
             setIsLoggedIn(true);
-            navigate('/home');
+            navigate('/');
         } else {
             alert('Invalid email or password. Please try again.');
         }
