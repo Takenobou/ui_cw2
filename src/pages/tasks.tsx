@@ -88,7 +88,9 @@ const Tasks: React.FC = () => {
         setTasks(sortTasks());
     }, [sortOrder, sortTasks, tasks]);
 
-
+    useEffect(() => {
+        resetFilters(); // Reset filters on initial load
+    }, []);
 
     return (
         <div className="flex min-h-full">
