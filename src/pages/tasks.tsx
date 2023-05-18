@@ -30,6 +30,8 @@ const Tasks: React.FC<TasksProps> = ({ initialSelectedTask }) => {
     const [statuses, setStatuses] = useState<string[]>([]);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+    const projectNames = [...new Set(tasks.map(task => task.project))];
+
 
     useEffect(() => {
         setTasks(taskData);
@@ -151,7 +153,7 @@ const Tasks: React.FC<TasksProps> = ({ initialSelectedTask }) => {
                         </div>
                     </div>
                 </div>
-                <div className="overflow-auto h-screen">
+                <div className="h-screen">
                     {tasks.map(task => (
                         <button
                             key={task.id}
@@ -168,8 +170,8 @@ const Tasks: React.FC<TasksProps> = ({ initialSelectedTask }) => {
                 </div>
             </div>
             {selectedTask ? (
-                <div className="w-4/5 ml-8 overflow-auto h-screen">
-                    <TaskDetails key={selectedTask.id} task={selectedTask} />
+                <div className="w-4/5 ml-8 h-screen">
+                    <TaskDetails key={selectedTask.id} task={selectedTask} projects={projectNames} />
                 </div>
             ) : (
                 <div className="w-4/5 ml-8 flex justify-center items-center">

@@ -46,12 +46,6 @@ const SideBar: React.FC = () => {
                         </li>
                         <li>
                             <button className="w-full text-left py-2 hover:bg-gray-100 rounded-lg transition-colors"
-                            >
-                                Update profile
-                            </button>
-                        </li>
-                        <li>
-                            <button className="w-full text-left py-2 hover:bg-gray-100 rounded-lg transition-colors"
                                     onClick={() => navigate("/signin")}>
                                 Log out
                             </button>
