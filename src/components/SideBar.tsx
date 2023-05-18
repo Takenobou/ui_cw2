@@ -39,9 +39,23 @@ const SideBar: React.FC = () => {
                 </div>
                 {isDropdownOpen && (
                     <ul className="absolute left-0 w-full space-y-2 bg-white rounded-b-lg shadow-lg mt-2 p-2">
-                        <li><button className="w-full text-left py-2 hover:bg-gray-100 rounded-lg transition-colors">Account settings</button></li>
-                        <li><button className="w-full text-left py-2 hover:bg-gray-100 rounded-lg transition-colors">Update profile</button></li>
-                        <li><button className="w-full text-left py-2 hover:bg-gray-100 rounded-lg transition-colors">Log out</button></li>
+                        <li>
+                            <button className="w-full text-left py-2 hover:bg-gray-100 rounded-lg transition-colors">
+                                Account settings
+                            </button>
+                        </li>
+                        <li>
+                            <button className="w-full text-left py-2 hover:bg-gray-100 rounded-lg transition-colors"
+                            >
+                                Update profile
+                            </button>
+                        </li>
+                        <li>
+                            <button className="w-full text-left py-2 hover:bg-gray-100 rounded-lg transition-colors"
+                                    onClick={() => navigate("/signin")}>
+                                Log out
+                            </button>
+                        </li>
                     </ul>
                 )}
             </div>
@@ -71,7 +85,8 @@ const SideBar: React.FC = () => {
                     </button>
                 </li>
                 <li className="flex items-center space-x-2">
-                    <button className="w-full py-2 px-4 flex items-center text-gray-700 hover:bg-gray-200 rounded-lg focus:outline-none">
+                    <button className="w-full py-2 px-4 flex items-center text-gray-700 hover:bg-gray-200 rounded-lg focus:outline-none"
+                            onClick={() => navigate('/calendar')}>
                         <FaCalendarAlt className="text-xl mr-2" />
                         <span className="font-medium">Calendar</span>
                     </button>

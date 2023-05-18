@@ -10,6 +10,7 @@ interface FormData {
     confirmPassword: string;
 }
 
+
 const SignUp = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState<FormData>({

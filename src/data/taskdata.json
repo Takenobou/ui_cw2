@@ -10,7 +10,8 @@
     "labels": ["UI", "Website"],
     "documents": ["homepage_design.pdf"],
     "automation": ["Automate CSS compilation"],
-    "project": "Website Redesign"
+    "project": "Website Redesign",
+    "priority": "Low"
   },
   {
     "id": 2,
@@ -23,7 +24,8 @@
     "labels": ["User Registration"],
     "documents": ["signup_process.docx", "user_requirements.pdf"],
     "automation": ["Automate email verification"],
-    "project": "User Management System"
+    "project": "User Management System",
+    "priority": "High"
   },
   {
     "id": 3,
@@ -36,7 +38,8 @@
     "labels": ["Database Design"],
     "documents": ["schema_diagram.png"],
     "automation": [],
-    "project": "Inventory Management System"
+    "project": "Inventory Management System",
+    "priority": "High"
   },
   {
     "id": 4,
@@ -49,7 +52,8 @@
     "labels": ["Product Search"],
     "documents": ["search_requirements.pdf"],
     "automation": ["Automate indexing of product data"],
-    "project": "E-commerce Website"
+    "project": "E-commerce Website",
+    "priority": "Normal"
   },
   {
     "id": 5,
@@ -62,7 +66,8 @@
     "labels": ["UI", "Mobile App"],
     "documents": [],
     "automation": [],
-    "project": "Mobile App Development"
+    "project": "Mobile App Development",
+    "priority": "High"
   },
   {
     "id": 6,
@@ -75,7 +80,8 @@
     "labels": ["Performance Optimization"],
     "documents": ["query_analysis.docx"],
     "automation": [],
-    "project": "Database Performance Enhancement"
+    "project": "Database Performance Enhancement",
+    "priority": "High"
   },
   {
     "id": 7,
@@ -88,7 +94,8 @@
     "labels": ["UI", "Website"],
     "documents": ["homepage_content_update.docx"],
     "automation": [],
-    "project": "Website Redesign"
+    "project": "Website Redesign",
+    "priority": "Normal"
   },
   {
     "id": 8,
@@ -101,7 +108,8 @@
     "labels": ["User Management"],
     "documents": ["password_recovery_process.pdf"],
     "automation": ["Automate email sending"],
-    "project": "User Management System"
+    "project": "User Management System",
+    "priority": "Low"
   },
   {
     "id": 9,
@@ -114,7 +122,8 @@
     "labels": ["Performance Optimization"],
     "documents": ["index_optimization_notes.txt"],
     "automation": [],
-    "project": "Inventory Management System"
+    "project": "Inventory Management System",
+    "priority": "High"
   },
   {
     "id": 10,
@@ -127,6 +136,7 @@
     "labels": ["User Management"],
     "documents": ["authentication_process.docx"],
     "automation": [],
-    "project": "User Management System"
+    "project": "User Management System",
+    "priority": "Normal"
   }
 ]

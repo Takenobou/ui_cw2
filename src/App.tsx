@@ -8,6 +8,7 @@ import NotFound from './components/NotFound';
 import PageWrapper from './components/PageWrapper';
 import Tasks from "./pages/tasks.tsx";
 import Projects from "./pages/projects.tsx";
+import Calendar from "./pages/calendar.tsx";
 
 const App: React.FC = () => {
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -22,6 +23,7 @@ const App: React.FC = () => {
                     <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
                     <Route path="/signin" element={<SignIn setIsLoggedIn={setIsLoggedIn} />} />
                     <Route path="*" element={<NotFound />} />
+                    <Route path="/calendar" element={<PageWrapper><Calendar /></PageWrapper>} />
                 </Routes>
             </div>
         </BrowserRouter>

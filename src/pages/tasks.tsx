@@ -10,13 +10,19 @@ interface Task {
     category: string;
     creationDate: string;
     dueDate: string;
+    description: string;
     labels: string[];
     documents: string[];
     automation: string[];
     project: string;
+    priority: string;
 }
 
-const Tasks: React.FC = () => {
+interface TasksProps {
+    initialSelectedTask?: Task;
+}
+
+const Tasks: React.FC<TasksProps> = ({ initialSelectedTask }) => {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [selectedTask, setSelectedTask] = useState<Task | null>(null);
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
@@ -28,6 +34,10 @@ const Tasks: React.FC = () => {
     useEffect(() => {
         setTasks(taskData);
 
+        if (initialSelectedTask) {
+            setSelectedTask(initialSelectedTask);
+        }
+
         const allLabels = new Set<string>();
         const allStatuses = new Set<string>();
 
@@ -38,7 +48,7 @@ const Tasks: React.FC = () => {
 
         setLabels(Array.from(allLabels));
         setStatuses(Array.from(allStatuses));
-    }, []);
+    }, [initialSelectedTask]);
 
     const selectTask = (task: Task) => {
         setSelectedTask(task);
@@ -94,7 +104,7 @@ const Tasks: React.FC = () => {
 
     return (
         <div className="flex min-h-full">
-            <div className="w-1/5 border-r border-gray-200 pr-8">
+            <div className="w-1/5 border-r border-gray-200 pr-8 overflow-auto h-screen">
                 <div className="flex justify-between items-center">
                     <div className={`relative bg-white shadow hover:shadow-lg transition-shadow p-2 mb-8 cursor-pointer ${isDropdownOpen ? 'rounded-t-lg' : 'rounded-lg'}`} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                         <div className="flex items-center space-x-2">
@@ -141,7 +151,7 @@ const Tasks: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="overflow-auto h-screen">
                     {tasks.map(task => (
                         <button
                             key={task.id}
@@ -158,8 +168,8 @@ const Tasks: React.FC = () => {
                 </div>
             </div>
             {selectedTask ? (
-                <div className="w-4/5 ml-8">
-                    <TaskDetails task={selectedTask} />
+                <div className="w-4/5 ml-8 overflow-auto h-screen">
+                    <TaskDetails key={selectedTask.id} task={selectedTask} />
                 </div>
             ) : (
                 <div className="w-4/5 ml-8 flex justify-center items-center">

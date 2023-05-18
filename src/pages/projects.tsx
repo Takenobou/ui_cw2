@@ -17,14 +17,20 @@ interface Task {
     project: string;
 }
 
-const Projects: React.FC = () => {
+interface ProjectsProps {
+    initialSelectedProject?: string;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ initialSelectedProject }) => {
     const [tasksData, setTasksData] = useState<Task[]>([]);
     const [selectedProject, setSelectedProject] = useState<string | null>(null);
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
     useEffect(() => {
-        setTasksData(taskData);
-    }, []);
+        setTasksData(taskData);if (initialSelectedProject) {
+            setSelectedProject(initialSelectedProject);
+        }
+    }, [initialSelectedProject]);
 
     // Generate unique project names
     let projectNames = [...new Set(tasksData.map(task => task.project))];
@@ -75,7 +81,7 @@ const Projects: React.FC = () => {
                 {selectedProject ? (
                     <ProjectView project={selectedProject} tasksData={tasksData} />
                 ) : (
-                    <div className="flex justify-center items-center h-full text-gray-500">
+                    <div className="flex justify-center items-center h-full text-gray-500 text-lg">
                         Select a project from the list
                     </div>
                 )}
