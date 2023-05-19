@@ -32,8 +32,6 @@ const Home: React.FC = () => {
     }
 
 
-
-
     // Get tasks due soon (within next 7 days)
     const tasksDueSoon = tasksData.filter(task => {
         const dueDate = new Date(task.dueDate);
@@ -72,7 +70,7 @@ const Home: React.FC = () => {
                         <p className="text-lg font-bold">{tasksData.length}</p>
                     </div>
                     <div className="p-4 border rounded shadow">
-                        <p className="text-sm text-gray-500">TasksDue Soon</p>
+                        <p className="text-sm text-gray-500">Tasks Due Soon</p>
                         <p className="text-lg font-bold">{tasksDueSoon.length}</p>
                     </div>
                     <div className="p-4 border rounded shadow">

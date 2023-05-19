@@ -23,16 +23,21 @@ interface Task {
     priority: string;
 }
 
-// Your custom Event component
-const CustomEvent = ({ event }: any) => (
+interface Event {
+    title: string;
+    start: Date;
+    end: Date;
+    allDay: boolean;
+}
+
+const CustomEvent = ({ event }: { event: Event }) => (
     <div className="bg-blue-500 text-white p-2 rounded">
         <strong>{event.title}</strong>
-        <p>{event.description}</p>
     </div>
 );
 
 const CalendarPage: React.FC = () => {
-    const [events, setEvents] = useState<any[]>([]);
+    const [events, setEvents] = useState<Event[]>([]);
 
     useEffect(() => {
         // Convert task data to event data
@@ -40,14 +45,14 @@ const CalendarPage: React.FC = () => {
             title: task.title,
             start: new Date(task.creationDate),
             end: new Date(task.dueDate),
-            allDay: false,
+            allDay: true,
         }));
 
         setEvents(eventData);
     }, []);
 
     return (
-        <div className="App h-full">
+        <div className="h-screen">
             <Calendar
                 className="bg-white m-4 rounded shadow"
                 localizer={localizer}
