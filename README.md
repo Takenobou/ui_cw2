@@ -1,6 +1,4 @@
-# ui_cw2
-
-# UI_CW2
+# ui_CW2
 
 This repository contains the UI_CW2 project, a React application built with Vite.
 
